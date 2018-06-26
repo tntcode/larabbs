@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PagesController@root')->name('root');
+Route::get('/', 'TopicsController@index')->name('root');
 
 //下面代码相当于Auth::routes();
 
