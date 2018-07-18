@@ -56,6 +56,16 @@ class TopicsController extends Controller
     }
 
     /**
+     * 话题详情
+     * @param  Topic  $topic [description]
+     * @return [type]        [description]
+     */
+    public function show(Topic $topic)
+    {
+        return $this->response->item($topic, new TopicTransformer());
+    }
+
+    /**
      * 创建话题
      * @param  TopicRequest $request [description]
      * @param  Topic        $topic   [description]
