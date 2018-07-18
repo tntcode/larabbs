@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Topic;
 use App\Models\Reply;
+use App\Models\User;
 use App\Http\Requests\Api\ReplyRequest;
 use App\Transformers\ReplyTransformer;
 
@@ -43,5 +44,29 @@ class RepliesController extends Controller
         $reply->delete();
 
         return $this->response->noContent();
+    }
+
+    /**
+     * 回复列表
+     * @param  Topic  $topic [description]
+     * @return [type]        [description]
+     */
+    public function index(Topic $topic)
+    {
+        $replies = $topic->replies()->paginate(20);
+
+        return $this->response->paginator($replies, new ReplyTransformer());
+    }
+
+    /**
+     * 某个用户的回复列表
+     * @param  User   $user [description]
+     * @return [type]       [description]
+     */
+    public function userIndex(User $user)
+    {
+        $replies = $user->replies()->paginate(20);
+
+        return $this->response->paginator($replies, new ReplyTransformer());
     }
 }
