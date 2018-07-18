@@ -38,4 +38,17 @@ class TopicsController extends Controller
         $topic->update($request->all());
         return $this->response->item($topic, new TopicTransformer());
     }
+
+    /**
+     * 删除话题
+     * @param  Topic  $topic [description]
+     * @return [type]        [description]
+     */
+    public function destroy(Topic $topic)
+    {
+        $this->authorize('update', $topic);
+
+        $topic->delete();
+        return $this->response->noContent();
+    }
 }
