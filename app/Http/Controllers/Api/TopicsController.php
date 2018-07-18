@@ -24,4 +24,18 @@ class TopicsController extends Controller
         return $this->response->item($topic, new TopicTransformer())
             ->setStatusCode(201);
     }
+
+    /**
+     * 修改话题
+     * @param  TopicRequest $request [description]
+     * @param  Topic        $topic   [description]
+     * @return [type]                [description]
+     */
+    public function update(TopicRequest $request, Topic $topic)
+    {
+        $this->authorize('update', $topic);
+
+        $topic->update($request->all());
+        return $this->response->item($topic, new TopicTransformer());
+    }
 }
