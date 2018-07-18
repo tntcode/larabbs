@@ -88,10 +88,15 @@ $api->version('v1', [
             // 发布话题
             $api->post('topics', 'TopicsController@store')
                 ->name('api.topics.store');
+            // 更新话题
             $api->patch('topics/{topic}', 'TopicsController@update')
                 ->name('api.topics.update');
+            // 删除话题
             $api->delete('topics/{topic}', 'TopicsController@destroy')
                 ->name('api.topics.destroy');
+            // 发布回复
+            $api->post('topics/{topic}/replies', 'RepliesController@store')
+                ->name('api.topics.replies.store');
         });
     });
 });
