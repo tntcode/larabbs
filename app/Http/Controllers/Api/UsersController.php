@@ -55,6 +55,11 @@ class UsersController extends Controller
         return $this->response->item($this->user(), new UserTransformer());
     }
 
+    /**
+     * 更新个人信息
+     * @param  UserRequest $request [description]
+     * @return [type]               [description]
+     */
     public function update(UserRequest $request)
     {
         $user = $this->user();
