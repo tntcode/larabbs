@@ -82,6 +82,10 @@ $api->version('v1', [
         $api->get('topics/{topic}', 'TopicsController@show')
             ->name('api.topics.show');
 
+        // 资源推荐
+        $api->get('links', 'LinksController@index')
+            ->name('api.links.index');
+
         // 需要 token 验证的接口
         $api->group(['middleware' => 'api.auth'], function($api) {
             // 当前登录用户信息
