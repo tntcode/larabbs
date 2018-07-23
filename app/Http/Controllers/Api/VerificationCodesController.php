@@ -8,6 +8,12 @@ use App\Http\Requests\Api\VerificationCodeRequest;
 
 class VerificationCodesController extends Controller
 {
+    /**
+     * 验证图片验证码，发送短信验证码
+     * @param  VerificationCodeRequest $request [description]
+     * @param  EasySms                 $easySms [description]
+     * @return [type]                           [description]
+     */
     public function store(VerificationCodeRequest $request, EasySms $easySms)
     {
         $captchaData = \Cache::get($request->captcha_key);

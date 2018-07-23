@@ -9,12 +9,13 @@ class UserRequest extends FormRequest
         switch($this->method()) {
             case 'POST':
                 return [
-                    'name' => 'required|string|max:255',
+                    'name' => 'required|string|max:255|unique:users,name',
                     'password' => 'required|string|min:6',
                     'verification_key' => 'required|string',
                     'verification_code' => 'required|string',
                 ];
                 break;
+            case 'PUT':
             case 'PATCH':
                 $userId = \Auth::guard('api')->id();
                 return [

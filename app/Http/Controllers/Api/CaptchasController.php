@@ -8,6 +8,12 @@ use App\Http\Requests\Api\CaptchaRequest;
 
 class CaptchasController extends Controller
 {
+    /**
+     * 发送图片验证码
+     * @param  CaptchaRequest $request        [description]
+     * @param  CaptchaBuilder $captchaBuilder [description]
+     * @return [type]                         [description]
+     */
     public function store(CaptchaRequest $request, CaptchaBuilder $captchaBuilder)
     {
         $key = 'captcha-'.str_random(15);
