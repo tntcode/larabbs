@@ -32,7 +32,7 @@ $api->version('v1', [
         // 短信验证码
         $api->post('verificationCodes', 'VerificationCodesController@store')
             ->name('api.verificationCodes.store');
-        // 用户注册
+        // 用户（手机）注册
         $api->post('users', 'UsersController@store')
             ->name('api.users.store');
         // 第三方登录
@@ -44,6 +44,9 @@ $api->version('v1', [
         // 小程序登录
         $api->post('weapp/authorizations', 'AuthorizationsController@weappStore')
             ->name('api.weapp.authorizations.store');
+        // 小程序注册
+        $api->post('weapp/users', 'UsersController@weappStore')
+            ->name('api.weapp.users.store');
         // 刷新token
         $api->put('authorizations/current', 'AuthorizationsController@update')
             ->name('api.authorizations.update');
