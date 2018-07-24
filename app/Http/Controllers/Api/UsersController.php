@@ -141,4 +141,14 @@ class UsersController extends Controller
     {
         return $this->response->collection($user->getActiveUsers(), new UserTransformer());
     }
+
+    /**
+     * 用户详情
+     * @param  User   $user [description]
+     * @return [type]       [description]
+     */
+    public function show(User $user)
+    {
+        return $this->response->item($user, new UserTransformer());
+    }
 }
